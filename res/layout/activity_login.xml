@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create New account"
+            android:text="Account"
             android:textSize="20sp"
             android:textStyle="bold"
             />
@@ -46,7 +46,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="resgiter"
+            android:text="Login"
             android:id="@+id/btnL"/>
     </LinearLayout>
 
