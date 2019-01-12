@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".SecondActivity">
 
-    <android.support.design.widget.CoordinatorLayout 
+    <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
         
@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000"
+            android:background="#B71C1C"
             >
             
             <de.hdodenhof.circleimageview.CircleImageView
@@ -32,5 +32,27 @@
             
             
         </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.CoordinatorLayout>
+
+
+        <android.support.design.widget.TabLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:id="@+id/tablayout"
+            android:background="#B71C1C"
+            app:tabSelectedTextColor="#fff"
+            app:tabIndicatorColor="#fff"
+            app:tabTextColor="#fff"
+            />
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view_pager"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        />
+
+
 </LinearLayout>
