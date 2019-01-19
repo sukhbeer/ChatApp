@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import com.example.android.chatapp2.Adapter.SectionPageAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 import static com.example.android.chatapp2.R.*;
 
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         if(currentUser==null){
             sendToStart();
         }
-
     }
 
     private void sendToStart(){
@@ -76,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId()==id.logoutBtn){
             FirebaseAuth.getInstance().signOut();
             sendToStart();
+        }
+        if(item.getItemId()==id.accSetBtn){
+            Intent intent=new Intent(MainActivity.this,SettingActivity.class);
+            startActivity(intent);
         }
         return true;
     }

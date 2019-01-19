@@ -10,6 +10,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="96dp"
         android:layout_height="96dp"
+        android:id="@+id/disImg"
         android:src="@mipmap/ic_launcher"
         android:layout_gravity="center_horizontal"
         />
@@ -25,11 +26,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Set Image"/>
-
-    <Button
-        android:id="@+id/statusBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Status"/>
 
 </LinearLayout>

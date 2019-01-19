@@ -19,16 +19,13 @@ public class SectionPageAdapter extends FragmentPagerAdapter {
 
         switch (i){
             case 0:
-                RequestFragment requestFragment=new RequestFragment();
-                return requestFragment;
+                return new RequestFragment();
 
             case 1:
-                ChatFragment chatFragment=new ChatFragment();
-                return chatFragment;
+                return new ChatFragment();
 
             case 2:
-                UserFragment userFragment=new UserFragment();
-                return userFragment;
+                return new UserFragment();
 
                 default:
                     return null;
@@ -37,6 +34,6 @@ public class SectionPageAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return 3;
     }
 }
