@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     Toolbar toolbar;
     ViewPager viewPager;
-    private SectionPageAdapter sectionPageAdapter;
     TabLayout tabLayout;
 
     @Override
@@ -36,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Chat App");
 
         viewPager=findViewById(R.id.mainTabPager);
-        sectionPageAdapter=new SectionPageAdapter(getSupportFragmentManager());
+        SectionPageAdapter sectionPageAdapter = new SectionPageAdapter(getSupportFragmentManager());
 
         viewPager.setAdapter(sectionPageAdapter);
         tabLayout=findViewById(id.mainTab);
