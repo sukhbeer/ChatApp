@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.android.chatapp2.Adapter.UserAdapter;
 import com.example.android.chatapp2.R;
-import com.example.android.chatapp2.Users;
+import com.example.android.chatapp2.Model.Users;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

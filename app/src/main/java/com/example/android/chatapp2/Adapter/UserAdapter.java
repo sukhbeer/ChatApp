@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.android.chatapp2.MessageActivity;
 import com.example.android.chatapp2.R;
-import com.example.android.chatapp2.Users;
+import com.example.android.chatapp2.Model.Users;
 
 
 import java.util.List;
