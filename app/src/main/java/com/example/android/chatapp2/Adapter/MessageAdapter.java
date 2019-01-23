@@ -1,19 +1,14 @@
 package com.example.android.chatapp2.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.android.chatapp2.MessageActivity;
 import com.example.android.chatapp2.Model.Chat;
 import com.example.android.chatapp2.R;
-import com.example.android.chatapp2.Model.Users;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -63,7 +58,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            showMessage=itemView.findViewById(R.id.senderMsg);
+            showMessage=itemView.findViewById(R.id.showMsg);
         }
     }
 

@@ -12,7 +12,7 @@
         android:textSize="20sp"
         android:padding="6dp"
         android:background="@drawable/background_left"
-        android:id="@+id/receiverMsg"
+        android:id="@+id/showMsg"
         />
 
 </RelativeLayout>
