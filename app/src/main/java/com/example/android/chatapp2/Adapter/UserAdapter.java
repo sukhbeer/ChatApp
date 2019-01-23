@@ -1,6 +1,7 @@
 package com.example.android.chatapp2.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.chatapp2.MessageActivity;
 import com.example.android.chatapp2.R;
 import com.example.android.chatapp2.Users;
+
 
 import java.util.List;
 
@@ -33,9 +36,19 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Users user1=user.get(i);
+        final Users user1=user.get(i);
         viewHolder.mName.setText(user1.getName());
         viewHolder.mImage.setImageResource(R.mipmap.ic_launcher);
+
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(context, MessageActivity.class);
+                intent.putExtra("id",user1.getId());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -43,7 +56,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return user.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView mName;
         ImageView mImage;

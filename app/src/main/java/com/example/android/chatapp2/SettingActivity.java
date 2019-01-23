@@ -31,25 +31,20 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
-import java.util.Random;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingActivity extends AppCompatActivity {
-    private static final String TAG = "MyActivity";
 
-    private DatabaseReference reference;
-    private FirebaseUser firebaseUser;
 
+    private static final int GALLERY_PICK = 1;
     CircleImageView circleImageView;
     TextView mName;
     Button img_Btn;
-
-    private static final int GALLERY_PICK=1;
-
+    private DatabaseReference reference;
+    private FirebaseUser firebaseUser;
     private StorageReference img_storageRef;
-    private StorageTask uploadTask;
-
 
 
     @Override
@@ -62,7 +57,7 @@ public class SettingActivity extends AppCompatActivity {
         mName = findViewById(R.id.disName);
         img_Btn = findViewById(R.id.imgBtn);
 
-        img_storageRef= FirebaseStorage.getInstance().getReference();
+        img_storageRef = FirebaseStorage.getInstance().getReference();
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String currentUser = firebaseUser.getUid();
@@ -71,8 +66,8 @@ public class SettingActivity extends AppCompatActivity {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String name = dataSnapshot.child("name").getValue().toString();
-                String image = dataSnapshot.child("image").getValue().toString();
+                String name = Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
+                String image = Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
 
                 mName.setText(name);
 
@@ -92,7 +87,7 @@ public class SettingActivity extends AppCompatActivity {
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
 
-                startActivityForResult(Intent.createChooser(intent,"SELECT IMAGE"),GALLERY_PICK);
+                startActivityForResult(Intent.createChooser(intent, "SELECT IMAGE"), GALLERY_PICK);
             }
         });
     }
@@ -100,11 +95,11 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==GALLERY_PICK && resultCode==RESULT_OK){
-            Uri imageUrl=data.getData();
+        if (requestCode == GALLERY_PICK && resultCode == RESULT_OK) {
+            Uri imageUrl = data.getData();
 
             CropImage.activity(imageUrl)
-                    .setAspectRatio(1,1)
+                    .setAspectRatio(1, 1)
                     .start(this);
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
@@ -113,9 +108,9 @@ public class SettingActivity extends AppCompatActivity {
 
                 Uri resultUri = result.getUri();
 
-                String currentUser_id=firebaseUser.getUid();
-                final StorageReference ref=img_storageRef.child("profile_img").child(currentUser_id + ".jpg");
-                uploadTask = ref.putFile(resultUri);
+                String currentUser_id = firebaseUser.getUid();
+                final StorageReference ref = img_storageRef.child("profile_img").child(currentUser_id + ".jpg");
+                StorageTask uploadTask = ref.putFile(resultUri);
 
                 uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -131,38 +126,18 @@ public class SettingActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if (task.isSuccessful()) {
                             Uri downloadUri = task.getResult();
-                            String mUrl=downloadUri.toString();
+                            String mUrl = downloadUri.toString();
                             reference.child("image").setValue(mUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                   Toast.makeText(SettingActivity.this,"Image Loaded Successfully",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SettingActivity.this, "Image Loaded Successfully", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } else {
-                            Toast.makeText(SettingActivity.this,"Error Loading Image",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SettingActivity.this, "Error Loading Image", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-//                path.putFile(resultUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-//                        if(task.isSuccessful()){
-//                           String url=storageReference.getDownloadUrl().toString();
-//                            Log.i(TAG, "url"+url);
-//                        reference.child("image").setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                              @Override
-//                              public void onComplete(@NonNull Task<Void> task) {
-//                                  if(task.isSuccessful()){
-//                                      Toast.makeText(SettingActivity.this,"Success Uploading",Toast.LENGTH_SHORT).show();
-//                                  }
-//                              }
-//                          });
-//                        }else {
-//                            Toast.makeText(SettingActivity.this,"Error",Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
