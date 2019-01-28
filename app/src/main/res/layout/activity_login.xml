@@ -8,12 +8,29 @@
     tools:context=".LoginActivity">
 
     <include layout="@layout/bar_layout" android:id="@+id/lohToolbar"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/chat_app"
+        android:textSize="35sp"
+        android:padding="25dp"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login in Account"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textSize="20sp"/>
+
     <EditText
         android:id="@+id/etLoginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:hint="Email"
+        android:layout_margin="15dp"
         />
     <EditText
         android:id="@+id/etLoginPwd"
@@ -21,11 +38,14 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:hint="Password"
+        android:layout_margin="15dp"
         />
     <Button
         android:id="@+id/LBtn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="30dp"
         android:text="Login"/>
 
 </LinearLayout>
