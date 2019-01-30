@@ -26,10 +26,8 @@ import java.util.HashMap;
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText name,email,password;
-    private Button btn;
 
     private FirebaseAuth mAuth;
-    private Toolbar toolbar;
     private DatabaseReference databaseReference;
 
 
@@ -38,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        toolbar=findViewById(R.id.regToolbar);
+        Toolbar toolbar = findViewById(R.id.regToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Create Account");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -51,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
         email=findViewById(R.id.edEmail);
         password=findViewById(R.id.edPassword);
 
-        btn=findViewById(R.id.btnReg);
+        Button btn = findViewById(R.id.btnReg);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

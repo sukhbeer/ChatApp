@@ -6,13 +6,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.android.chatapp2.Model.Chat;
 import com.example.android.chatapp2.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder> {
 
@@ -21,10 +25,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     private Context context;
     private List<Chat> chat;
+    private String imageUrl;
 
-    public MessageAdapter(Context context, List<Chat> chat) {
+    public MessageAdapter(Context context, List<Chat> chat,String imageUrl) {
         this.context = context;
         this.chat = chat;
+        this.imageUrl=imageUrl;
     }
 
     @NonNull
@@ -53,12 +59,14 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView showMessage;
+        CircleImageView usersImage;
 
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             showMessage=itemView.findViewById(R.id.showMsg);
+            usersImage=itemView.findViewById(R.id.userImage);
         }
     }
 

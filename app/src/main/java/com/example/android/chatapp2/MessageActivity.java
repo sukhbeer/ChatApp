@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -97,10 +98,13 @@ public class MessageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Users users=dataSnapshot.getValue(Users.class);
                 userName.setText(users.getName());
-                profileImg.setImageResource(R.mipmap.ic_launcher);
-                readMsg(fUser.getUid(),username);
+                if(users.getImage().equals("default")) {
+                    profileImg.setImageResource(R.mipmap.ic_launcher);
+                }else{
+                   Picasso.get().load(users.image).into(profileImg);
+                }
+                readMsg(fUser.getUid(),username,users.getImage());
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -120,7 +124,7 @@ public class MessageActivity extends AppCompatActivity {
         reference.child("Chats").push().setValue(hashMap);
     }
 
-    private void readMsg(final String currId, final String userId){
+    private void readMsg(final String currId, final String userId, final String imageUrl){
         chats=new ArrayList<>();
 
         reference=FirebaseDatabase.getInstance().getReference("Chats");
@@ -135,7 +139,7 @@ public class MessageActivity extends AppCompatActivity {
                         chats.add(mChat);
                     }
                 }
-                messageAdapter=new MessageAdapter(MessageActivity.this,chats);
+                messageAdapter=new MessageAdapter(MessageActivity.this,chats,imageUrl);
                 recyclerView.setAdapter(messageAdapter);
             }
 
