@@ -12,8 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
 import com.example.android.chatapp2.Adapter.MessageAdapter;
 import com.example.android.chatapp2.Model.Chat;
 import com.example.android.chatapp2.Model.Users;
@@ -25,11 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageActivity extends AppCompatActivity {
@@ -103,7 +99,7 @@ public class MessageActivity extends AppCompatActivity {
                 }else{
                    Picasso.get().load(users.image).into(profileImg);
                 }
-                readMsg(fUser.getUid(),username,users.getImage());
+                readMsg(fUser.getUid(),username);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -124,7 +120,7 @@ public class MessageActivity extends AppCompatActivity {
         reference.child("Chats").push().setValue(hashMap);
     }
 
-    private void readMsg(final String currId, final String userId, final String imageUrl){
+    private void readMsg(final String currId, final String userId){
         chats=new ArrayList<>();
 
         reference=FirebaseDatabase.getInstance().getReference("Chats");
@@ -139,7 +135,7 @@ public class MessageActivity extends AppCompatActivity {
                         chats.add(mChat);
                     }
                 }
-                messageAdapter=new MessageAdapter(MessageActivity.this,chats,imageUrl);
+                messageAdapter=new MessageAdapter(MessageActivity.this,chats);
                 recyclerView.setAdapter(messageAdapter);
             }
 

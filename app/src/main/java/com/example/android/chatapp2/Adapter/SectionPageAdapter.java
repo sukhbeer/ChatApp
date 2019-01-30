@@ -6,12 +6,11 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.android.chatapp2.Fragment.ChatFragment;
-import com.example.android.chatapp2.Fragment.RequestFragment;
 import com.example.android.chatapp2.Fragment.UserFragment;
 
 public class SectionPageAdapter extends FragmentPagerAdapter {
 
-private String tabTitle[]=new String[]{"None","Chats","Users"};
+private String tabTitle[]=new String[]{"Chats","Users"};
     public SectionPageAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -21,12 +20,9 @@ private String tabTitle[]=new String[]{"None","Chats","Users"};
 
         switch (i){
             case 0:
-                return new RequestFragment();
-
-            case 1:
                 return new ChatFragment();
 
-            case 2:
+            case 1:
                 return new UserFragment();
 
                 default:
@@ -36,7 +32,7 @@ private String tabTitle[]=new String[]{"None","Chats","Users"};
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Nullable

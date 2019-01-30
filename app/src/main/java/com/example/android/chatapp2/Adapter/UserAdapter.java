@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.android.chatapp2.MessageActivity;
 import com.example.android.chatapp2.R;
 import com.example.android.chatapp2.Model.Users;
+import com.squareup.picasso.Picasso;
 
 
 import java.util.List;
@@ -38,8 +39,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         final Users user1=user.get(i);
         viewHolder.mName.setText(user1.getName());
-        viewHolder.mImage.setImageResource(R.mipmap.ic_launcher);
-
+        if(user1.getImage().equals("default")){
+            viewHolder.mImage.setImageResource(R.mipmap.ic_launcher);
+        }else {
+            Picasso.get().load(user1.getImage()).into(viewHolder.mImage);
+        }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

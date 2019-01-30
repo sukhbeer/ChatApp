@@ -25,12 +25,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
 
     private Context context;
     private List<Chat> chat;
-    private String imageUrl;
 
-    public MessageAdapter(Context context, List<Chat> chat,String imageUrl) {
+    public MessageAdapter(Context context, List<Chat> chat) {
         this.context = context;
         this.chat = chat;
-        this.imageUrl=imageUrl;
     }
 
     @NonNull
@@ -59,14 +57,12 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView showMessage;
-        CircleImageView usersImage;
 
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             showMessage=itemView.findViewById(R.id.showMsg);
-            usersImage=itemView.findViewById(R.id.userImage);
         }
     }
 

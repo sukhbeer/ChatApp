@@ -28,6 +28,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
@@ -62,16 +64,31 @@ public class SettingActivity extends AppCompatActivity {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         String currentUser = firebaseUser.getUid();
         reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser);
+        reference.keepSynced(true);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String name = Objects.requireNonNull(dataSnapshot.child("name").getValue()).toString();
-                String image = Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
+                final String image = Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString();
 
                 mName.setText(name);
 
-                Picasso.get().load(image).into(circleImageView);
+                if(image.equals("default")){
+                    circleImageView.setImageResource(R.mipmap.ic_launcher);
+                }else {
+                    Picasso.get().load(image).networkPolicy(NetworkPolicy.OFFLINE).into(circleImageView, new Callback() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+                            Picasso.get().load(image).into(circleImageView);
+                        }
+                    });
+                }
             }
 
             @Override
