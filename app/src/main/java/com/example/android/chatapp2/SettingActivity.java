@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -47,6 +48,7 @@ public class SettingActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser firebaseUser;
     private StorageReference img_storageRef;
+    private Toolbar toolbar;
 
 
     @Override
@@ -58,6 +60,11 @@ public class SettingActivity extends AppCompatActivity {
         circleImageView = findViewById(R.id.disImg);
         mName = findViewById(R.id.disName);
         img_Btn = findViewById(R.id.imgBtn);
+
+        toolbar=findViewById(R.id.sToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Setting");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         img_storageRef = FirebaseStorage.getInstance().getReference();
 

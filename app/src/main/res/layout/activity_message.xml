@@ -49,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/btn_Send"
             android:layout_centerVertical="true"
+            android:layout_margin="10dp"
             android:hint="Type message"
             />
        <ImageButton
