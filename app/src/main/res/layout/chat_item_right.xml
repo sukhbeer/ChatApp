@@ -14,11 +14,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello"
-        android:padding="6dp"
-        android:textSize="20sp"
+        android:padding="8dp"
+        android:textSize="18sp"
         android:layout_alignParentEnd="true"
         android:background="@drawable/background_right"
         android:id="@+id/showMsg"
         />
     </RelativeLayout>
+
 </RelativeLayout>

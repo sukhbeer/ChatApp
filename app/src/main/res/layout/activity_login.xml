@@ -14,7 +14,8 @@
         android:text="@string/chat_app"
         android:textSize="35sp"
         android:padding="25dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="@color/black"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -24,25 +25,45 @@
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:textSize="20sp"/>
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintTextAppearance="@style/MyHintText">
 
-    <EditText
-        android:id="@+id/etLoginEmail"
+        <EditText
+            android:id="@+id/etLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            android:paddingStart="@dimen/five_dp"
+            android:paddingEnd="@dimen/five_dp"
+            android:background="@drawable/lr_edit_text"
+            android:layout_margin="15dp"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:inputType="textEmailAddress"
-        android:hint="Email"
-        android:background="@drawable/lr_edit_text"
-        android:layout_margin="15dp"
-        />
-    <EditText
-        android:id="@+id/etLoginPwd"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:layout_margin="15dp"
-        android:background="@drawable/lr_edit_text"
-        />
+        android:layout_height="wrap_content"
+        app:hintTextAppearance="@style/MyHintText">
+
+        <EditText
+            android:id="@+id/etLoginPwd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingStart="@dimen/five_dp"
+            android:paddingEnd="@dimen/five_dp"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:layout_margin="15dp"
+            android:background="@drawable/lr_edit_text"
+            />
+
+    </android.support.design.widget.TextInputLayout>
+
+
     <Button
         android:id="@+id/LBtn"
         android:layout_width="wrap_content"

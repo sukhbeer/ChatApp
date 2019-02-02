@@ -97,7 +97,7 @@ public class MessageActivity extends AppCompatActivity {
                 if(users.getImage().equals("default")) {
                     profileImg.setImageResource(R.mipmap.ic_launcher);
                 }else{
-                   Picasso.get().load(users.image).into(profileImg);
+                   Picasso.get().load(users.getImage()).into(profileImg);
                 }
                 readMsg(fUser.getUid(),username);
             }
