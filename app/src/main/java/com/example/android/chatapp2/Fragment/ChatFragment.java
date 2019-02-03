@@ -73,28 +73,6 @@ public class ChatFragment extends Fragment {
 
             }
         });
-        /*reference=FirebaseDatabase.getInstance().getReference("Chats");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                userList.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Chat chat=snapshot.getValue(Chat.class);
-                    if(chat.getSender().equals(fUser.getUid())){
-                        userList.add(chat.getReceiver());
-                    }
-                    if(chat.getReceiver().equals(fUser.getUid())){
-                        userList.add(chat.getSender());
-                    }
-                }
-                readChat();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
         return view;
     }
 
@@ -124,52 +102,4 @@ public class ChatFragment extends Fragment {
             }
         });
     }
-
-  //  public void readChat(){
-       /* mUser=new ArrayList<>();
-
-        reference=FirebaseDatabase.getInstance().getReference("Users");
-
-         reference.addValueEventListener(new ValueEventListener() {
-            @Override
-              public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                mUser.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Users users = snapshot.getValue(Users.class);
-
-                    /*for(String id: userList2){
-                        if(id.equals(ids)){
-                            mUser.add(users);
-                        }
-                    }
-
-                    userAdapter=new UserAdapter(getContext(),mUser);
-                    recyclerView.setAdapter(userAdapter);
-
-                    /*for(String id : userList){
-                        if(users.getId().equals(id)){
-                            if(mUser.size()!=0){
-                                for(Users user1 : mUser){
-                                    if(!users.getId().equals(user1.getId())){
-                                        mUser.add(users);
-                                    }
-                                }
-                            }else{
-                                mUser.add(users);
-                            }
-                        }
-                    }
-                }
-
-                userAdapter=new UserAdapter(getContext(),mUser);
-                recyclerView.setAdapter(userAdapter);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });*/
-
-  //  }
 }
