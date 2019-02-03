@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login in Account"
+        android:text="@string/login_in_account"
         android:textColor="@color/colorAccent"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:inputType="textEmailAddress"
-            android:hint="Email"
+            android:hint="@string/email"
             android:paddingStart="@dimen/five_dp"
             android:paddingEnd="@dimen/five_dp"
             android:background="@drawable/lr_edit_text"
@@ -46,7 +46,7 @@
             android:paddingStart="@dimen/five_dp"
             android:paddingEnd="@dimen/five_dp"
             android:inputType="textPassword"
-            android:hint="Password"
+            android:hint="@string/password"
             android:layout_margin="15dp"
             android:background="@drawable/lr_edit_text"
             />
@@ -58,6 +58,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="30dp"
         android:background="@color/colorAccent"
-        android:text="Login"/>
+        android:text="@string/login"/>
 
 </LinearLayout>

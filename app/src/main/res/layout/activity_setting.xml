@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,17 +8,12 @@
 
     <include layout="@layout/bar_layout" android:id="@+id/sToolbar"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@color/colorAccent"
-        android:orientation="vertical"
-        >
-
         <TextView
+            android:id="@+id/pro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Profile"
+            android:layout_below="@+id/sToolbar"
             android:gravity="center"
             android:textSize="50sp" />
 
@@ -26,18 +21,16 @@
             android:id="@+id/disImg"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/pro"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            android:src="@mipmap/ic_launcher"/>
-
-    </RelativeLayout>
+            android:layout_margin="30dp"
+            android:src="@drawable/user"/>
 
     <TextView
         android:id="@+id/disName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:layout_below="@+id/disImg"
         android:text="Name"
         android:gravity="center"
         android:textSize="40sp" />
@@ -46,9 +39,10 @@
         android:id="@+id/imgBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="60dp"
-        android:text="Set Image"
-        android:background="@color/colorAccent"/>
+        android:layout_below="@+id/disName"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorAccent"
+        android:layout_margin="@dimen/fifteen_dp"
+        android:text="Set Image" />
 
-</LinearLayout>
+</RelativeLayout>
