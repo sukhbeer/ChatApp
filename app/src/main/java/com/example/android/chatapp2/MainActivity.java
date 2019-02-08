@@ -13,6 +13,9 @@ import com.example.android.chatapp2.Adapter.SectionPageAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 import static com.example.android.chatapp2.R.*;
 
@@ -22,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     ViewPager viewPager;
     TabLayout tabLayout;
+    FirebaseUser currentUser;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-        FirebaseUser currentUser=mAuth.getCurrentUser();
+         currentUser=mAuth.getCurrentUser();
 
         if(currentUser==null){
             sendToStart();
@@ -74,12 +79,33 @@ public class MainActivity extends AppCompatActivity {
 
         if(item.getItemId()==id.logoutBtn){
             FirebaseAuth.getInstance().signOut();
-            sendToStart();
+            startActivity(new Intent(MainActivity.this,StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         }
         if(item.getItemId()==id.accSetBtn){
             Intent intent=new Intent(MainActivity.this,SettingActivity.class);
             startActivity(intent);
         }
         return true;
+    }
+
+    public void status(String status){
+        reference= FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
+
+        HashMap<String, Object>hashMap=new HashMap<>();
+        hashMap.put("status",status);
+
+        reference.updateChildren(hashMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        status("offline");
     }
 }

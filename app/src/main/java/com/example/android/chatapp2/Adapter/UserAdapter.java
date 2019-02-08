@@ -22,10 +22,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private Context context;
     private List<Users> user;
+    private boolean isChat;
 
-    public UserAdapter(Context context, List<Users> user) {
+    public UserAdapter(Context context, List<Users> user, boolean isChat) {
         this.context = context;
         this.user = user;
+        this.isChat=isChat;
     }
 
     @NonNull
@@ -43,6 +45,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             viewHolder.mImage.setImageResource(R.mipmap.ic_launcher);
         }else {
             Picasso.get().load(user1.getImage()).into(viewHolder.mImage);
+        }
+
+        if(isChat){
+            if(user1.getStatus().equals("online")){
+                viewHolder.uStatus.setVisibility(View.VISIBLE);
+                viewHolder.uStatus.setVisibility(View.GONE);
+            }
+            else{
+                viewHolder.uStatus.setVisibility(View.GONE);
+                viewHolder.uStatus.setVisibility(View.VISIBLE);
+            }
         }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -64,12 +77,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
         TextView mName;
         ImageView mImage;
+        ImageView uStatus;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mName=itemView.findViewById(R.id.txtUser);
             mImage=itemView.findViewById(R.id.imgUser);
+            uStatus=itemView.findViewById(R.id.userStatus);
         }
     }
 

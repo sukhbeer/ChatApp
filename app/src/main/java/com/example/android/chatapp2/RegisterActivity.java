@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                             HashMap<String,String> hashMap=new HashMap<>();
                             hashMap.put("name",name);
-                            hashMap.put("status","Hi");
+                            hashMap.put("status","");
                             hashMap.put("image","default");
                             hashMap.put("thumb_image","default");
 
