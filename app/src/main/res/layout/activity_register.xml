@@ -17,14 +17,14 @@
         android:textSize="35sp"
         android:textColor="@color/black"
         android:gravity="center"
-        android:padding="25dp"
+        android:padding="@dimen/twenty_five_dp"
         />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
+        android:paddingStart="@dimen/fifteen_dp"
+        android:paddingEnd="@dimen/fifteen_dp"
         android:textColor="@color/colorAccent"
         android:text="@string/create_new_account"
         android:textSize="20sp"/>
@@ -32,34 +32,34 @@
         <EditText
             android:id="@+id/edName"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_margin="15dp"
+            android:layout_height="@dimen/fifty_dp"
+            android:layout_margin="@dimen/fifteen_dp"
             android:background="@drawable/lr_edit_text"
             android:ems="10"
             android:hint="@string/username"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp" />
+            android:paddingStart="@dimen/five_dp"
+            android:paddingEnd="@dimen/five_dp" />
 
         <EditText
             android:id="@+id/edEmail"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/fifty_dp"
             android:background="@drawable/lr_edit_text"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/fifteen_dp"
             android:ems="10"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
+            android:paddingStart="@dimen/five_dp"
+            android:paddingEnd="@dimen/five_dp"
             android:hint="@string/email" />
 
         <EditText
             android:id="@+id/edPassword"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="@dimen/fifty_dp"
             android:background="@drawable/lr_edit_text"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/fifteen_dp"
             android:ems="10"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
+            android:paddingStart="@dimen/five_dp"
+            android:paddingEnd="@dimen/five_dp"
             android:hint="@string/password" />
 
 
@@ -70,6 +70,6 @@
         android:text="@string/create"
         android:background="@color/colorAccent"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"/>
+        android:layout_margin="@dimen/thirty_dp"/>
 
 </LinearLayout>

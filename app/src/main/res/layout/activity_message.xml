@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff3e0"
+    android:background="@color/background_color_chat"
     tools:context=".MessageActivity">
 
     <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/bar_layout"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/msgToolbar"
@@ -20,53 +19,57 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userImage"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                />
+                android:layout_width="@dimen/thirty_dp"
+                android:layout_height="@dimen/thirty_dp"
+                android:src="@mipmap/ic_launcher" />
 
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:id="@+id/userName"
-               android:textColor="#000"
-               />
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/seven_dp"
+                android:text="@string/username"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
 
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
     <RelativeLayout
+        android:id="@+id/bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom"
-        android:padding="@dimen/five_dp"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/five_dp">
 
         <EditText
             android:id="@+id/msgEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toStartOf="@+id/btn_Send"
             android:layout_centerVertical="true"
             android:layout_margin="@dimen/five_dp"
+            android:layout_toStartOf="@+id/btn_Send"
+            android:layout_toLeftOf="@+id/btn_Send"
             android:background="#fff"
-            android:hint="Type message"
-            />
-       <ImageButton
-           android:layout_width="40dp"
-           android:layout_height="40dp"
-           android:background="@drawable/circle"
-           android:src="@drawable/ic_action_name"
-           android:id="@+id/btn_Send"
-           android:layout_centerVertical="true"
-           android:layout_alignParentEnd="true"/>
+            android:hint="@string/type_message" />
+
+        <ImageButton
+            android:id="@+id/btn_Send"
+            android:layout_width="@dimen/forty_dp"
+            android:layout_height="@dimen/forty_dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/circle"
+            android:src="@drawable/ic_action_name" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewMsg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/recyclerViewMsg"
-        android:layout_below="@+id/bar_layout"
-        android:layout_above="@+id/bottom"/>
+        android:layout_above="@+id/bottom"
+        android:layout_below="@+id/bar_layout" />
 
 </RelativeLayout>

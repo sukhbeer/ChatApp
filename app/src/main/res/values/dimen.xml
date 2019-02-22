@@ -4,4 +4,16 @@
     <dimen name="fifteen_dp">15dp</dimen>
     <dimen name="fifty_dp">50dp</dimen>
     <dimen name="seven_dp">7dp</dimen>
+    <dimen name="twenty_dp">20dp</dimen>
+    <dimen name="four_dp">4dp</dimen>
+    <dimen name="forty_dp">40dp</dimen>
+    <dimen name="thirty_dp">30dp</dimen>
+    <dimen name="twenty_five_dp">25dp</dimen>
+    <dimen name="twenty_five_zero">250dp</dimen>
+    <dimen name="one_one_zero">110dp</dimen>
+    <dimen name="three_hundred">300dp</dimen>
+    <dimen name="seven_five_dp">75dp</dimen>
+    <dimen name="ten_dp">10dp</dimen>
+    <dimen name="minus_fourteen_dp">-14dp</dimen>
+    <dimen name="eight_dp">8dp</dimen>
 </resources>

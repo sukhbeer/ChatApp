@@ -10,7 +10,8 @@ import com.example.android.chatapp2.Fragment.UserFragment;
 
 public class SectionPageAdapter extends FragmentPagerAdapter {
 
-private String tabTitle[]=new String[]{"Chats","Users"};
+    private String tabTitle[] = new String[]{"Chats", "Users"};
+
     public SectionPageAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -18,15 +19,15 @@ private String tabTitle[]=new String[]{"Chats","Users"};
     @Override
     public Fragment getItem(int i) {
 
-        switch (i){
+        switch (i) {
             case 0:
                 return new ChatFragment();
 
             case 1:
                 return new UserFragment();
 
-                default:
-                    return null;
+            default:
+                return null;
         }
     }
 

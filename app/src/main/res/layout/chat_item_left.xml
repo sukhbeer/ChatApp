@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
+    android:layout_width="@dimen/three_hundred"
     android:layout_height="wrap_content"
-    android:padding="8dp"
+    android:padding="@dimen/five_dp"
     >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello"
-        android:textSize="20sp"
-        android:padding="6dp"
+        android:textSize="18sp"
+        android:padding="@dimen/four_dp"
         android:background="@drawable/background_left"
         android:id="@+id/showMsg"
         />

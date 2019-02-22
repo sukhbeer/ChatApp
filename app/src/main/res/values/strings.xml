@@ -16,4 +16,7 @@
     <string name="new_user_account">New User Account</string>
     <string name="if_already_have_an_account">if Already have an Account ?</string>
     <string name="hello">Hello</string>
+    <string name="set_image">Set Image</string>
+    <string name="profile">Profile</string>
+    <string name="type_message">Type message</string>
 </resources>

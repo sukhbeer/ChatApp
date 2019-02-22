@@ -48,7 +48,6 @@ public class SettingActivity extends AppCompatActivity {
     private DatabaseReference reference;
     private FirebaseUser firebaseUser;
     private StorageReference img_storageRef;
-    private Toolbar toolbar;
 
 
     @Override
@@ -61,9 +60,9 @@ public class SettingActivity extends AppCompatActivity {
         mName = findViewById(R.id.disName);
         img_Btn = findViewById(R.id.imgBtn);
 
-        toolbar=findViewById(R.id.sToolbar);
+        Toolbar toolbar = findViewById(R.id.sToolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Setting");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Setting");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +74,7 @@ public class SettingActivity extends AppCompatActivity {
         img_storageRef = FirebaseStorage.getInstance().getReference();
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        assert firebaseUser != null;
         String currentUser = firebaseUser.getUid();
         reference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser);
         reference.keepSynced(true);
@@ -87,9 +87,9 @@ public class SettingActivity extends AppCompatActivity {
 
                 mName.setText(name);
 
-                if(image.equals("default")){
+                if (image.equals("default")) {
                     circleImageView.setImageResource(R.mipmap.ic_launcher);
-                }else {
+                } else {
                     Picasso.get().load(image).networkPolicy(NetworkPolicy.OFFLINE).into(circleImageView, new Callback() {
                         @Override
                         public void onSuccess() {
@@ -126,6 +126,7 @@ public class SettingActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GALLERY_PICK && resultCode == RESULT_OK) {
+            assert data != null;
             Uri imageUrl = data.getData();
 
             CropImage.activity(imageUrl)
@@ -136,6 +137,7 @@ public class SettingActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
 
+                assert result != null;
                 Uri resultUri = result.getUri();
 
                 String currentUser_id = firebaseUser.getUid();
@@ -156,6 +158,7 @@ public class SettingActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Uri> task) {
                         if (task.isSuccessful()) {
                             Uri downloadUri = task.getResult();
+                            assert downloadUri != null;
                             String mUrl = downloadUri.toString();
                             reference.child("image").setValue(mUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -168,11 +171,11 @@ public class SettingActivity extends AppCompatActivity {
                         }
                     }
                 });
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+            }/* else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 if (result != null) {
                     Exception error = result.getError();
-                }
-            }
+               }
+           }*/
         }
     }
 }

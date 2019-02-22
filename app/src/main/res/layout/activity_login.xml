@@ -7,57 +7,58 @@
     android:orientation="vertical"
     tools:context=".LoginActivity">
 
-    <include layout="@layout/bar_layout" android:id="@+id/lohToolbar"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/chat_app"
-        android:textSize="35sp"
-        android:padding="25dp"
-        android:gravity="center"
-        android:textColor="@color/black"/>
+    <include
+        android:id="@+id/lohToolbar"
+        layout="@layout/bar_layout" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/twenty_five_dp"
+        android:text="@string/chat_app"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/fifteen_dp"
+        android:paddingEnd="@dimen/fifteen_dp"
         android:text="@string/login_in_account"
         android:textColor="@color/colorAccent"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
 
-        <EditText
-            android:id="@+id/etLoginEmail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email"
-            android:paddingStart="@dimen/five_dp"
-            android:paddingEnd="@dimen/five_dp"
-            android:background="@drawable/lr_edit_text"
-            android:layout_margin="15dp"
-            />
+    <EditText
+        android:id="@+id/etLoginEmail"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_margin="@dimen/fifteen_dp"
+        android:background="@drawable/lr_edit_text"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:paddingStart="@dimen/five_dp"
+        android:paddingEnd="@dimen/five_dp" />
 
-        <EditText
-            android:id="@+id/etLoginPwd"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:paddingStart="@dimen/five_dp"
-            android:paddingEnd="@dimen/five_dp"
-            android:inputType="textPassword"
-            android:hint="@string/password"
-            android:layout_margin="15dp"
-            android:background="@drawable/lr_edit_text"
-            />
+    <EditText
+        android:id="@+id/etLoginPwd"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fifty_dp"
+        android:layout_margin="@dimen/fifteen_dp"
+        android:background="@drawable/lr_edit_text"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:paddingStart="@dimen/five_dp"
+        android:paddingEnd="@dimen/five_dp" />
 
     <Button
         android:id="@+id/LBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"
+        android:layout_margin="@dimen/thirty_dp"
         android:background="@color/colorAccent"
-        android:text="@string/login"/>
+        android:text="@string/login" />
 
 </LinearLayout>

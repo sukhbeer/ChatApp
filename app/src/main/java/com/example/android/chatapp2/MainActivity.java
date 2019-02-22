@@ -33,17 +33,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_main);
 
-        mAuth=FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
-        toolbar=findViewById(id.mainToolbar);
+        toolbar = findViewById(id.mainToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Chat App");
 
-        viewPager=findViewById(R.id.mainTabPager);
+        viewPager = findViewById(R.id.mainTabPager);
         SectionPageAdapter sectionPageAdapter = new SectionPageAdapter(getSupportFragmentManager());
 
         viewPager.setAdapter(sectionPageAdapter);
-        tabLayout=findViewById(id.mainTab);
+        tabLayout = findViewById(id.mainTab);
         tabLayout.setupWithViewPager(viewPager);
     }
 
@@ -52,15 +52,15 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-         currentUser=mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
 
-        if(currentUser==null){
+        if (currentUser == null) {
             sendToStart();
         }
     }
 
-    private void sendToStart(){
-        Intent intent=new Intent(MainActivity.this,StartActivity.class);
+    private void sendToStart() {
+        Intent intent = new Intent(MainActivity.this, StartActivity.class);
         startActivity(intent);
         finish();
     }
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
 
-        getMenuInflater().inflate(R.menu.menu,menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -77,22 +77,22 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        if(item.getItemId()==id.logoutBtn){
+        if (item.getItemId() == id.logoutBtn) {
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(MainActivity.this,StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            startActivity(new Intent(MainActivity.this, StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
         }
-        if(item.getItemId()==id.accSetBtn){
-            Intent intent=new Intent(MainActivity.this,SettingActivity.class);
+        if (item.getItemId() == id.accSetBtn) {
+            Intent intent = new Intent(MainActivity.this, SettingActivity.class);
             startActivity(intent);
         }
         return true;
     }
 
-    public void status(String status){
-        reference= FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
+    public void status(String status) {
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(currentUser.getUid());
 
-        HashMap<String, Object>hashMap=new HashMap<>();
-        hashMap.put("status",status);
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
 
         reference.updateChildren(hashMap);
     }

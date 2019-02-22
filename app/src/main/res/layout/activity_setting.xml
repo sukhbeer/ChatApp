@@ -12,18 +12,18 @@
             android:id="@+id/pro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Profile"
+            android:text="@string/profile"
             android:layout_below="@+id/sToolbar"
             android:gravity="center"
             android:textSize="50sp" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/disImg"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="@dimen/one_one_zero"
+            android:layout_height="@dimen/one_one_zero"
             android:layout_below="@+id/pro"
             android:layout_centerHorizontal="true"
-            android:layout_margin="30dp"
+            android:layout_margin="@dimen/thirty_dp"
             android:src="@drawable/user"/>
 
     <TextView
@@ -31,18 +31,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/disImg"
-        android:text="Name"
+        android:text="@string/username"
         android:gravity="center"
         android:textSize="40sp" />
 
     <Button
         android:id="@+id/imgBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/twenty_five_zero"
+        android:layout_height="@dimen/thirty_dp"
         android:layout_below="@+id/disName"
-        android:layout_centerHorizontal="true"
         android:background="@color/colorAccent"
-        android:layout_margin="@dimen/fifteen_dp"
-        android:text="Set Image" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/thirty_dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="@string/set_image" />
 
 </RelativeLayout>

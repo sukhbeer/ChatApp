@@ -8,9 +8,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imgUser"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:padding="5dp"
+        android:layout_width="@dimen/seven_five_dp"
+        android:layout_height="@dimen/seven_five_dp"
+        android:padding="@dimen/five_dp"
         android:src="@mipmap/ic_launcher"/>
 
     <TextView
@@ -20,19 +20,22 @@
         android:layout_centerInParent="true"
         android:layout_toEndOf="@+id/imgUser"
         android:text="@string/username"
-        android:textSize="25sp"/>
+        android:textSize="25sp"
+        android:layout_toRightOf="@+id/imgUser" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="@dimen/fifteen_dp"
         android:layout_height="@dimen/fifteen_dp"
         app:civ_border_color="#05df29"
-        app:civ_border_width="10dp"
+        app:civ_border_width="@dimen/ten_dp"
         android:visibility="gone"
         android:id="@+id/userStatus"
         android:layout_below="@id/txtUser"
-        android:layout_marginStart="-14dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/minus_fourteen_dp"
+        android:layout_marginTop="@dimen/eight_dp"
         android:layout_toEndOf="@id/imgUser"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginLeft="@dimen/minus_fourteen_dp"
+        android:layout_toRightOf="@id/imgUser" />
 
 </RelativeLayout>

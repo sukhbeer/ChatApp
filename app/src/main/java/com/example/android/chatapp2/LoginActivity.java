@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText email,password;
+    EditText email, password;
     Button lBtn;
     Toolbar toolbar;
     FirebaseAuth auth;
@@ -29,41 +29,42 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        auth=FirebaseAuth.getInstance();
+        auth = FirebaseAuth.getInstance();
 
-        toolbar=findViewById(R.id.lohToolbar);
+        toolbar = findViewById(R.id.lohToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        email=findViewById(R.id.etLoginEmail);
-        password=findViewById(R.id.etLoginPwd);
-        lBtn=findViewById(R.id.LBtn);
+        email = findViewById(R.id.etLoginEmail);
+        password = findViewById(R.id.etLoginPwd);
+        lBtn = findViewById(R.id.LBtn);
 
         lBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mEmail=email.getText().toString();
-                String mPassword=password.getText().toString();
+                String mEmail = email.getText().toString();
+                String mPassword = password.getText().toString();
 
-                if (!TextUtils.isEmpty(mEmail) || !TextUtils.isEmpty(mPassword)){
+                if (!TextUtils.isEmpty(mEmail) || !TextUtils.isEmpty(mPassword)) {
                     loginUser(mEmail, mPassword);
                 }
             }
         });
     }
-    private void loginUser(String email, String password){
+
+    private void loginUser(String email, String password) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-             if(task.isSuccessful()){
-                 Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                 startActivity(intent);
-                 finish();
-             }else{
-                 Toast.makeText(LoginActivity.this,"Cannot Sign in",Toast.LENGTH_SHORT).show();
-             }
+                if (task.isSuccessful()) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Cannot Sign in", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

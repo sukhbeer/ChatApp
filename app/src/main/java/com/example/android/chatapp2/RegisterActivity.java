@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText name,email,password;
+    private EditText name, email, password;
 
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
@@ -42,52 +42,51 @@ public class RegisterActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
+        mAuth = FirebaseAuth.getInstance();
 
-        mAuth=FirebaseAuth.getInstance();
-
-        name=findViewById(R.id.edName);
-        email=findViewById(R.id.edEmail);
-        password=findViewById(R.id.edPassword);
+        name = findViewById(R.id.edName);
+        email = findViewById(R.id.edEmail);
+        password = findViewById(R.id.edPassword);
 
         Button btn = findViewById(R.id.btnReg);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mName=name.getText().toString();
-                String mEmail=email.getText().toString();
-                String mPassword=password.getText().toString();
+                String mName = name.getText().toString();
+                String mEmail = email.getText().toString();
+                String mPassword = password.getText().toString();
 
-                if(!TextUtils.isEmpty(mName) || !TextUtils.isEmpty(mEmail) || !TextUtils.isEmpty(mPassword)){
-                    register(mName,mEmail,mPassword);
+                if (!TextUtils.isEmpty(mName) || !TextUtils.isEmpty(mEmail) || !TextUtils.isEmpty(mPassword)) {
+                    register(mName, mEmail, mPassword);
                 }
             }
         });
     }
 
-    void register(final String name, String email, String password){
+    void register(final String name, String email, String password) {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
-                            FirebaseUser currentUser=FirebaseAuth.getInstance().getCurrentUser();
-                            String uid=currentUser.getUid();
+                            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                            String uid = currentUser.getUid();
 
-                            databaseReference=FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
+                            databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(uid);
 
-                            HashMap<String,String> hashMap=new HashMap<>();
-                            hashMap.put("name",name);
-                            hashMap.put("status","");
-                            hashMap.put("image","default");
-                            hashMap.put("thumb_image","default");
+                            HashMap<String, String> hashMap = new HashMap<>();
+                            hashMap.put("name", name);
+                            hashMap.put("status", "");
+                            hashMap.put("image", "default");
+                            hashMap.put("thumb_image", "default");
 
                             databaseReference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
+                                    if (task.isSuccessful()) {
+                                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
                                         finish();

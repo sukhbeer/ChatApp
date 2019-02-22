@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:padding="@dimen/five_dp">
 
     <RelativeLayout
-        android:layout_width="300dp"
+        android:layout_width="@dimen/three_hundred"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        tools:ignore="UselessParent">
+        tools:ignore="UselessParent"
+        android:layout_alignParentRight="true">
 
         <TextView
             android:id="@+id/showMsg"
@@ -17,9 +18,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:background="@drawable/background_right"
-            android:padding="8dp"
+            android:padding="@dimen/four_dp"
             android:text="@string/hello"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 
 </RelativeLayout>

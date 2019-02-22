@@ -47,22 +47,22 @@ public class ChatFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.fragment_chat,container,false);
-        recyclerView =view.findViewById(R.id.recyclerViewChat);
+        View view = inflater.inflate(R.layout.fragment_chat, container, false);
+        recyclerView = view.findViewById(R.id.recyclerViewChat);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        fUser= FirebaseAuth.getInstance().getCurrentUser();
+        fUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        userList= new ArrayList<>();
+        userList = new ArrayList<>();
 
-        reference=FirebaseDatabase.getInstance().getReference("ChatId").child(fUser.getUid());
+        reference = FirebaseDatabase.getInstance().getReference("ChatId").child(fUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userList.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    ChatId chatId=snapshot.getValue(ChatId.class);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    ChatId chatId = snapshot.getValue(ChatId.class);
                     userList.add(chatId);
                 }
                 chat();
@@ -76,22 +76,22 @@ public class ChatFragment extends Fragment {
         return view;
     }
 
-    private void chat(){
-        mUser=new ArrayList<>();
-        reference=FirebaseDatabase.getInstance().getReference("Users");
+    private void chat() {
+        mUser = new ArrayList<>();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUser.clear();
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Users users=snapshot.getValue(Users.class);
-                    for(ChatId chatId : userList){
-                        if(users.getId().equals(chatId.getId())){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Users users = snapshot.getValue(Users.class);
+                    for (ChatId chatId : userList) {
+                        if (users.getId().equals(chatId.getId())) {
                             mUser.add(users);
                         }
                     }
                 }
-                userAdapter = new UserAdapter(getContext(),mUser,false);
+                userAdapter = new UserAdapter(getContext(), mUser, false);
                 recyclerView.setAdapter(userAdapter);
 
             }

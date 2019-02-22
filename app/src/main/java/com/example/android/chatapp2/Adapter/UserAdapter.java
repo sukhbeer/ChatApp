@@ -27,32 +27,31 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public UserAdapter(Context context, List<Users> user, boolean isChat) {
         this.context = context;
         this.user = user;
-        this.isChat=isChat;
+        this.isChat = isChat;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view= LayoutInflater.from(context).inflate(R.layout.item_list,viewGroup,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_list, viewGroup, false);
         return new UserAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        final Users user1=user.get(i);
+        final Users user1 = user.get(i);
         viewHolder.mName.setText(user1.getName());
-        if(user1.getImage().equals("default")){
+        if (user1.getImage().equals("default")) {
             viewHolder.mImage.setImageResource(R.mipmap.ic_launcher);
-        }else {
+        } else {
             Picasso.get().load(user1.getImage()).into(viewHolder.mImage);
         }
 
-        if(isChat){
-            if(user1.getStatus().equals("online")){
+        if (isChat) {
+            if (user1.getStatus().equals("online")) {
                 viewHolder.uStatus.setVisibility(View.VISIBLE);
                 viewHolder.uStatus.setVisibility(View.GONE);
-            }
-            else{
+            } else {
                 viewHolder.uStatus.setVisibility(View.GONE);
                 viewHolder.uStatus.setVisibility(View.VISIBLE);
             }
@@ -61,8 +60,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(context, MessageActivity.class);
-                intent.putExtra("id",user1.getId());
+                Intent intent = new Intent(context, MessageActivity.class);
+                intent.putExtra("id", user1.getId());
                 context.startActivity(intent);
             }
         });
@@ -73,7 +72,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return user.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mName;
         ImageView mImage;
@@ -82,9 +81,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            mName=itemView.findViewById(R.id.txtUser);
-            mImage=itemView.findViewById(R.id.imgUser);
-            uStatus=itemView.findViewById(R.id.userStatus);
+            mName = itemView.findViewById(R.id.txtUser);
+            mImage = itemView.findViewById(R.id.imgUser);
+            uStatus = itemView.findViewById(R.id.userStatus);
         }
     }
 
