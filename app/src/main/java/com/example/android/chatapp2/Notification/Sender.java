@@ -1,8 +1,8 @@
 package com.example.android.chatapp2.Notification;
 
 public class Sender {
-    public Data data;
-    public String to;
+    private Data data;
+    private String to;
 
     public Sender(Data data, String to) {
         this.data = data;

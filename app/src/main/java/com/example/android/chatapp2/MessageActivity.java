@@ -79,7 +79,7 @@ public class MessageActivity extends AppCompatActivity {
         userName = findViewById(R.id.userName);
         btn_send = findViewById(R.id.btn_Send);
         editText = findViewById(R.id.msgEditText);
-        scrollView=findViewById(R.id.scrollView);
+        scrollView = findViewById(R.id.scrollView);
 
         Toolbar toolbar = findViewById(R.id.msgToolbar);
         setSupportActionBar(toolbar);
@@ -102,7 +102,7 @@ public class MessageActivity extends AppCompatActivity {
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                notify=true;
+                notify = true;
                 String msg = editText.getText().toString();
                 if (!msg.equals("")) {
                     sendMessage(fUser.getUid(), userid, msg);
@@ -171,9 +171,9 @@ public class MessageActivity extends AppCompatActivity {
         reference.addValueEventListener((new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Users users =  dataSnapshot.getValue(Users.class);
+                Users users = dataSnapshot.getValue(Users.class);
                 if (notify) {
-                    sendNotificatioiin(receiver,users.getName(),msg);
+                    sendNotificatioiin(receiver, users.getName(), msg);
                 }
                 notify = false;
             }
@@ -186,26 +186,26 @@ public class MessageActivity extends AppCompatActivity {
 
     }
 
-    private void sendNotificatioiin(String reciver, final String username, final String message){
-        final DatabaseReference token=FirebaseDatabase.getInstance().getReference("Tokens");
+    private void sendNotificatioiin(String reciver, final String username, final String message) {
+        final DatabaseReference token = FirebaseDatabase.getInstance().getReference("Tokens");
         Query query = token.orderByKey().equalTo(reciver);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Token tokenM = snapshot.getValue(Token.class);
-                    Data data = new Data(fUser.getUid(),R.mipmap.ic_launcher,username+": "+message,"New Message",
+                    Data data = new Data(fUser.getUid(), R.mipmap.ic_launcher, username + ": " + message, "New Message",
                             userid);
 
-                    Sender sender = new Sender(data,tokenM.getToken());
+                    Sender sender = new Sender(data, tokenM.getToken());
 
                     api.sendNotification(sender)
                             .enqueue(new Callback<Response>() {
                                 @Override
                                 public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
-                                    if(response.code()==200){
-                                        if(response.body().success !=1){
-                                            Toast.makeText(MessageActivity.this,"Failed!",Toast.LENGTH_SHORT).show();
+                                    if (response.code() == 200) {
+                                        if (response.body().success != 1) {
+                                            Toast.makeText(MessageActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 }
@@ -242,7 +242,7 @@ public class MessageActivity extends AppCompatActivity {
                         messageAdapter = new MessageAdapter(MessageActivity.this, chats);
                         recyclerView.setAdapter(messageAdapter);
 
-                        recyclerView.scrollToPosition(messageAdapter.getItemCount()-1);
+                        recyclerView.scrollToPosition(messageAdapter.getItemCount() - 1);
                     }
                 }
             }

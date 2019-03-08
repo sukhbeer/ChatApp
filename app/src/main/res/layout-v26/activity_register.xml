@@ -33,13 +33,13 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/fifty_dp"
             android:layout_margin="@dimen/fifteen_dp"
-            android:inputType="text"
             android:background="@drawable/lr_edit_text"
             android:ems="10"
             android:hint="@string/username"
             android:paddingStart="@dimen/five_dp"
             android:paddingEnd="@dimen/five_dp"
-            tools:ignore="Autofill" />
+            android:autofillHints="@string/username"
+            android:inputType="text"/>
 
         <EditText
             android:id="@+id/edEmail"
@@ -48,24 +48,24 @@
             android:background="@drawable/lr_edit_text"
             android:layout_margin="@dimen/fifteen_dp"
             android:ems="10"
-            android:inputType="textEmailAddress"
             android:paddingStart="@dimen/five_dp"
             android:paddingEnd="@dimen/five_dp"
             android:hint="@string/email"
-            tools:ignore="Autofill" />
+            android:autofillHints="@string/email"
+            android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/edPassword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/fifty_dp"
-            android:inputType="textPassword"
             android:background="@drawable/lr_edit_text"
             android:layout_margin="@dimen/fifteen_dp"
             android:ems="10"
             android:paddingStart="@dimen/five_dp"
             android:paddingEnd="@dimen/five_dp"
             android:hint="@string/password"
-            tools:ignore="Autofill" />
+            android:autofillHints="@string/password"
+            android:inputType="textPassword" />
 
 
     <Button

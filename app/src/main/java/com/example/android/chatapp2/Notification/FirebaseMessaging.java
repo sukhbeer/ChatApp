@@ -25,7 +25,7 @@ public class FirebaseMessaging extends FirebaseMessagingService {
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        if(firebaseUser !=null && sent.equals(firebaseUser.getUid())){
+        if (firebaseUser != null && sent.equals(firebaseUser.getUid())) {
             sendNotification(remoteMessage);
         }
     }
@@ -38,16 +38,16 @@ public class FirebaseMessaging extends FirebaseMessagingService {
         String body = remoteMessage.getData().get("body");
 
         RemoteMessage.Notification notification = remoteMessage.getNotification();
-        int j = Integer.parseInt(user.replaceAll("[\\D]",""));
-        Intent intent =new Intent(this, MessageActivity.class);
-        Bundle bundle=new Bundle();
-        bundle.putString("id",user);
+        int j = Integer.parseInt(user.replaceAll("[\\D]", ""));
+        Intent intent = new Intent(this, MessageActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("id", user);
         intent.putExtras(bundle);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this,j,intent,PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, j, intent, PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder builder=new NotificationCompat.Builder(this)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(Integer.parseInt(icon))
                 .setContentTitle(title)
                 .setContentText(body)
@@ -58,8 +58,8 @@ public class FirebaseMessaging extends FirebaseMessagingService {
 
         int i = 0;
         if (j > 0) {
-            i=j;
+            i = j;
         }
-        notificationManager.notify(i,builder.build());
+        notificationManager.notify(i, builder.build());
     }
 }

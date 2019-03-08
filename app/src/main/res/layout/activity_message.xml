@@ -63,6 +63,8 @@
             android:id="@+id/msgEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/five_dp"
+            android:layout_marginRight="@dimen/five_dp"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/btn_Send"
             android:layout_toLeftOf="@+id/btn_Send"
@@ -78,7 +80,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@drawable/circle"
-            android:src="@drawable/ic_action_name" />
+            android:src="@drawable/ic_action_name"
+            android:contentDescription="@string/todo" />
     </RelativeLayout>
 
 

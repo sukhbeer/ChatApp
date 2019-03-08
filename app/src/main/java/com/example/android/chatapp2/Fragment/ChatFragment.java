@@ -76,7 +76,7 @@ public class ChatFragment extends Fragment {
         return view;
     }
 
-    private void updateToken(String token){
+    private void updateToken(String token) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
         Token token1 = new Token(token);
         reference.child(fUser.getUid()).setValue(token1);
